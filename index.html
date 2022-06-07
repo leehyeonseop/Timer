@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="timer.css">
+</head>
+<body>
+    <div id="app">
+        <h1>
+            <img src="./images/weniv-logo.svg" alt="">
+        </h1>
+        <article class="timer">
+            <h2>timer</h2>
+            <ul class="time-list">
+                <li>
+                    HRS
+                    <div class="time hour">00</div>
+                </li>
+                <li>
+                    MIN
+                    <div class="time minute">00</div>
+                </li>
+                <li>
+                    SEC
+                    <div class="time second">00</div>
+                </li>
+            </ul>
+
+            <ul class="button-list">
+                <li>
+                    <button type="button" class="start">START</button>
+                </li>
+                <li>
+                    <button type="reset" class="reset">RESET</button>
+                </li>
+            </ul>
+        </article>
+    </div>
+
+    <script>
+        let hour = document.querySelector('.time.hour')
+        let minute = document.querySelector('.time.minute')
+        let second = document.querySelector('.time.second')
+
+        const start = document.querySelector('.start')
+        start.addEventListener('click', startbtn)
+
+        function startbtn() {
+            let cron = setInterval(updateTime, 1000)
+        }
+
+        let TIME = 0
+        function updateTime() {
+            const hrs = Math.floor(TIME/3600);
+            const checkmin = Math.floor(TIME/60);
+            const sec = TIME % 60;
+            const min = checkmin % 60;
+            TIME++;
+            second.textContent = sec
+            minute.textContent = min
+            hour.textContent = hrs
+        }
+
+    </script>
+</body>
+</html>
